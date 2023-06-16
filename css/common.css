@@ -1,0 +1,6 @@
+.wrapper{width: 100vw; height: auto; margin: auto; background: #fff; position: relative;}
+.container{width:100%; padding: 0 1.5rem;}
+.section{margin-top: 1.5rem;}
+.section-title h2{font-size: 1.25rem; font-weight: 500;}
+.section-title{margin-bottom: .5rem;}
+

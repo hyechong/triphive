@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon Link -->
+ <link rel="shortcut icon" href="/triphive/images/favicon.png">
+ <link rel="apple-touch-icon" href="/triphive/images/favicon.png">
+
+  <title>TripHive</title>
+
+  <!-- Remix Icon Link -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Swiper Slide -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+
+
+  <!-- Stylesheet Link -->
+  <link rel="stylesheet" href="/triphive/css/reset.css">
+  <link rel="stylesheet" href="/triphive/css/common.css">
+  <link rel="stylesheet" href="/triphive/css/main.css">
+
+
+</head>
+<body>
+  
+  <div class="wrapper">
+    <!-- Navi -->
+    <div id="navi-wrapper">
+      <div class="container">
+        <div class="navi">
+          <ul>
+            <li class="on"><a href="/triphive/index.html"><i class="ri-home-7-line"></i></a></li>
+            <li><a href="#"><i class="ri-heart-2-line"></i></a></li>
+            <li><a href="#"><i class="ri-suitcase-line"></i></a></li>
+            <li><a href="#"><i class="ri-user-line"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Greeting -->
+    <div class="greeting-wrapper container">
+      <div class="greeting-text">
+        <p><span>혜지</span>님,</p>
+        <span>어디로 떠나볼까요?</span>
+      </div>
+      <div class="greeting-image">
+        <img src="images/favicon.png" alt="">
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-form-wrapper container">
+      <div class="search-form">
+        <form action="/triphive/result.html">
+          <button class="search-btn" type="submit"><i class="ri-search-line"></i></button>
+          <input type="text" placeholder="여행지를 입력해 주세요." name="search">
+        </form>
+      </div>
+    </div>
+
+    <!-- Recommand destination Section -->
+    <div class="recommand-des-section-wrapper container">
+      <div class="recommand-des-section section">
+        <div class="section-title">
+          <h2>추천 여행지</h2>
+        </div>
+        <div class="recommand-des-swiper-wrapper">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="recommand-des-image-wrapper">
+                  <img src="/triphive/images/recommand-1.jpg" alt="">
+                  <div class="recommand-des-text-wrapper">
+                    <h4>오사카</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="recommand-des-image-wrapper">
+                  <img src="/triphive/images/recommand-2.jpg" alt="">
+                  <div class="recommand-des-text-wrapper">
+                    <h4>다낭</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="recommand-des-image-wrapper">
+                  <img src="/triphive/images/recommand-3.jpg" alt="">
+                  <div class="recommand-des-text-wrapper">
+                    <h4>몽골</h4>
+                  </div>
+                </div>
+              </div>           
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popular room Section -->
+    <div class="popular-room-section-wrapper container">
+      <div class="popular-room-section section">
+        <div class="section-title">
+          <h2>국내 숙소</h2>
+        </div>
+        <div class="popular-room-swiper-wrapper">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Near room Section -->
+    <div class="near-room-section-wrapper container">
+      <div class="near-room-section section">
+        <div class="section-title">
+          <h2>내 주변 숙소</h2>
+        </div>
+        <div class="near-room-swiper-wrapper">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+  <script>
+    const url = document.location.href;
+    if(url==='https://ckgpwl2.cafe24.com/triphive/'){
+      location.href='https://ckgpwl2.cafe24.com/triphive/index.html'
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+  <script src="/triphive/js/customjs.js"></script>
+  <script src="/triphive/js/api.js"></script>
+</body>
+</html>
