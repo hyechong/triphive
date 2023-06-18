@@ -5,7 +5,7 @@ window.addEventListener('load', function () {
 // Popular Room Section
 async function getPopularRoomData() {
   const url =
-    'https://airbnb13.p.rapidapi.com/search-location?location=Korea&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=USD';
+    'https://airbnb13.p.rapidapi.com/search-location?location=Korea&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW';
   const options = {
     method: 'GET',
     headers: {
@@ -71,7 +71,7 @@ async function getNearRoomData(position) {
     2
   )}&sw_lng=${(lng - 0.05).toFixed(
     2
-  )}&checkin=2023-09-15&checkout=2023-09-16&adults=1&children=0&infants=0&pets=0&page=1&currency=USD`;
+  )}&checkin=2023-09-15&checkout=2023-09-16&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
 
   const options = {
     method: 'GET',

@@ -13,3 +13,5 @@ function searchSwiper() {
   );
 }
 searchSwiper();
+
+const searchForm = document.querySelector('.search-form form');
