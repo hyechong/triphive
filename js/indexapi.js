@@ -13,7 +13,6 @@ async function getPopularRoomData() {
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
-  console.log(url);
   try {
     const response = await fetch(url, options);
     const data = await response.json();
@@ -27,14 +26,15 @@ async function getPopularRoomData() {
       // console.log(roomInfo);
       popularRoomList = `
         <div class="swiper-slide">
+        <a href="/triphive/pages/detail.html?room_id=${roomInfo.id}">
           <div class="popular-room-image-wrapper">
-            <a href="/triphive/detail.html">
-              <img src="${roomInfo.images[0]}" alt="">
-              <div class="popular-room-text-wrapper">
-                <h4>${roomInfo.name}</h4>
-              </div>
-            </a>
+            <img src="${roomInfo.images[0]}" alt="">
           </div>
+          <div class="popular-room-text-wrapper">
+            <h4>${roomInfo.name}</h4>
+            <span>${roomInfo.address}</span>
+          </div>
+        </a>
         </div>
       `;
 
@@ -62,8 +62,8 @@ function getError() {
 }
 
 async function getNearRoomData(position) {
-  const lat = Number(position.coords.latitude.toFixed(2));
-  const lng = Number(position.coords.longitude.toFixed(2));
+  const lat = Number(position.coords.latitude);
+  const lng = Number(position.coords.longitude);
 
   const url = `https://airbnb13.p.rapidapi.com/search-geo?ne_lat=${(
     lat + 0.05
@@ -94,14 +94,15 @@ async function getNearRoomData(position) {
       // console.log(roomInfo);
       nearRoomList = `
         <div class="swiper-slide">
-          <div class="near-room-image-wrapper">
-            <a href="/triphive/detail.html">
+          <a href="/triphive/pages/detail.html?ne_lat=${(lat + 0.05).toFixed(2)}&ne_lng=${(lng + 0.05).toFixed(2)}&sw_lat=${(lat - 0.05).toFixed(2)}&sw_lng=${(lng - 0.05).toFixed(2)}&room_id=${roomInfo.id}">
+            <div class="near-room-image-wrapper">
               <img src="${roomInfo.images[0]}" alt="">
-              <div class="near-room-text-wrapper">
-                <h4>${roomInfo.name}</h4>
-              </div>
-            </a>
-          </div>
+            </div>
+            <div class="near-room-text-wrapper">
+              <h4>${roomInfo.name}</h4>
+              <span>${roomInfo.address}</span>
+            </div>
+          </a>
         </div>
       `;
 
@@ -121,3 +122,15 @@ function nearSwiper() {
     spaceBetween: 10,
   });
 }
+
+// Search
+const searchBtn = document.querySelector('.search-btn');
+
+searchBtn.addEventListener('click', function () {
+  const keyValue = document.querySelector('.search-input').value;
+  if (keyValue == '' || null || undefined) {
+    alert('여행지를 입력하세요');
+  } else {
+    location.href = `/triphive/pages/result.html?search=${keyValue}`;
+  }
+});
