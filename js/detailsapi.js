@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
   const url = window.location.href;
-  if(url.includes('search')){
+  if (url.includes('search')) {
     getSearchDetailData();
-  } else if(url.includes('ne_lat')){
+  } else if (url.includes('ne_lat')) {
     getNearDetailData();
   } else {
     getKoreaDetailData();
@@ -21,14 +21,15 @@ function handleDetailSwiper() {
   });
 }
 
-const searchValue2 = new URLSearchParams(location.search).get('search');
-// console.log(searchValue);
+var searchValue2 = new URLSearchParams(location.search).get('search');
+
 const neLat = new URLSearchParams(location.search).get('ne_lat');
 const neLng = new URLSearchParams(location.search).get('ne_lng');
 const swLat = new URLSearchParams(location.search).get('sw_lat');
 const swLng = new URLSearchParams(location.search).get('sw_lng');
 const roomID = new URLSearchParams(location.search).get('room_id');
-// console.log(roomID);
+
+const loadingSocket = document.querySelector('.socket');
 
 // Search Detail Section
 async function getSearchDetailData() {
@@ -65,11 +66,12 @@ async function getSearchDetailData() {
           `;
           detailSwiperWrapper.insertAdjacentHTML('beforeend', roomDetailImg);
         }
-        console.log(roomInfo);
         roomDetailTxt = `
           <div class="main-detail-section section">
             <h4>${roomInfo.name}</h4>
-            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${roomInfo.address}</span>
+            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${
+          roomInfo.address
+        }</span>
             <p>₩ ${roomInfo.price.total.toLocaleString()}/박</p>
           </div>
           <div class="facilities-detail-section section">
@@ -87,7 +89,9 @@ async function getSearchDetailData() {
                 <div class="facility-image-wrapper">
                   <img src="/triphive/images/bedroom.512x410.png" alt="">
                 </div>
-                <span>침실 ${roomInfo.bedrooms}개, 침대 ${roomInfo.beds}개</span>
+                <span>침실 ${roomInfo.bedrooms}개, 침대 ${
+          roomInfo.beds
+        }개</span>
               </div>
             </div>
           </div>
@@ -103,9 +107,12 @@ async function getSearchDetailData() {
           </div>
         `;
         detailTxtWrapper.insertAdjacentHTML('beforeend', roomDetailTxt);
-        initMap(roomInfo.lat, roomInfo.lng)
+        initMap(roomInfo.lat, roomInfo.lng);
       }
     });
+    loadingSocket.style.visibility = 'hidden';
+    loadingSocket.style.zIndex = '-999';
+    loadingSocket.style.opacity = '0';
     handleDetailSwiper();
   } catch (error) {
     console.error(error);
@@ -151,7 +158,9 @@ async function getKoreaDetailData() {
         roomDetailTxt = `
           <div class="main-detail-section section">
             <h4>${roomInfo.name}</h4>
-            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${roomInfo.address}</span>
+            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${
+          roomInfo.address
+        }</span>
             <p>₩ ${roomInfo.price.total.toLocaleString()}/박</p>
           </div>
           <div class="facilities-detail-section section">
@@ -169,7 +178,9 @@ async function getKoreaDetailData() {
                 <div class="facility-image-wrapper">
                   <img src="/triphive/images/bedroom.512x410.png" alt="">
                 </div>
-                <span>침실 ${roomInfo.bedrooms}개, 침대 ${roomInfo.beds}개</span>
+                <span>침실 ${roomInfo.bedrooms}개, 침대 ${
+          roomInfo.beds
+        }개</span>
               </div>
             </div>
           </div>
@@ -185,9 +196,12 @@ async function getKoreaDetailData() {
           </div>
         `;
         detailTxtWrapper.insertAdjacentHTML('beforeend', roomDetailTxt);
-        initMap(roomInfo.lat, roomInfo.lng)
+        initMap(roomInfo.lat, roomInfo.lng);
       }
     });
+    loadingSocket.style.visibility = 'hidden';
+    loadingSocket.style.opacity = '0';
+    loadingSocket.style.zIndex = '-999';
     handleDetailSwiper();
   } catch (error) {
     console.error(error);
@@ -232,7 +246,9 @@ async function getNearDetailData() {
         roomDetailTxt = `
           <div class="main-detail-section section">
             <h4>${roomInfo.name}</h4>
-            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${roomInfo.address}</span>
+            <span><i class="ri-star-fill"> ${roomInfo.rating}</i> ${
+          roomInfo.address
+        }</span>
             <p>₩ ${roomInfo.price.total.toLocaleString()}/박</p>
           </div>
           <div class="facilities-detail-section section">
@@ -250,7 +266,9 @@ async function getNearDetailData() {
                 <div class="facility-image-wrapper">
                   <img src="/triphive/images/bedroom.512x410.png" alt="">
                 </div>
-                <span>침실 ${roomInfo.bedrooms}개, 침대 ${roomInfo.beds}개</span>
+                <span>침실 ${roomInfo.bedrooms}개, 침대 ${
+          roomInfo.beds
+        }개</span>
               </div>
             </div>
           </div>
@@ -266,9 +284,12 @@ async function getNearDetailData() {
           </div>
         `;
         detailTxtWrapper.insertAdjacentHTML('beforeend', roomDetailTxt);
-        initMap(roomInfo.lat, roomInfo.lng)
+        initMap(roomInfo.lat, roomInfo.lng);
       }
     });
+    loadingSocket.style.visibility = 'hidden';
+    loadingSocket.style.zIndex = '-999';
+    loadingSocket.style.opacity = '0';
     handleDetailSwiper();
   } catch (error) {
     console.error(error);
@@ -276,17 +297,17 @@ async function getNearDetailData() {
 }
 
 // Google Maps
-window.initMap = function(lat,lng){
-  let map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat:lat, lng:lng},
+window.initMap = function (lat, lng) {
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: lat, lng: lng },
     zoom: 15,
-  })
+  });
   let marker = new google.maps.Marker({
-    position:{lat:lat, lng:lng},
+    position: { lat: lat, lng: lng },
     icon: {
       url: '/triphive/images/icons/map-marker.png',
-      scaledSize: new google.maps.Size(34,47),
+      scaledSize: new google.maps.Size(34, 47),
     },
-    map: map
-  })
-}
+    map: map,
+  });
+};

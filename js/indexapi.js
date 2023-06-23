@@ -1,3 +1,5 @@
+const loader = document.querySelector('.preloader');
+
 window.addEventListener('load', function () {
   getPopularRoomData();
 });
@@ -21,9 +23,7 @@ async function getPopularRoomData() {
     );
     let popularRoomList = '';
 
-    // console.log(data);
     data.results.forEach((roomInfo) => {
-      // console.log(roomInfo);
       popularRoomList = `
         <div class="swiper-slide">
         <a href="/triphive/pages/detail.html?room_id=${roomInfo.id}">
@@ -84,6 +84,7 @@ async function getNearRoomData(position) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
+    // loaderRing.classList.remove('loading');
     const nearRoomSwiperWrapper = document.querySelector(
       '.near-room-swiper-wrapper .swiper-wrapper'
     );
@@ -94,7 +95,11 @@ async function getNearRoomData(position) {
       // console.log(roomInfo);
       nearRoomList = `
         <div class="swiper-slide">
-          <a href="/triphive/pages/detail.html?ne_lat=${(lat + 0.05).toFixed(2)}&ne_lng=${(lng + 0.05).toFixed(2)}&sw_lat=${(lat - 0.05).toFixed(2)}&sw_lng=${(lng - 0.05).toFixed(2)}&room_id=${roomInfo.id}">
+          <a href="/triphive/pages/detail.html?ne_lat=${(lat + 0.05).toFixed(
+            2
+          )}&ne_lng=${(lng + 0.05).toFixed(2)}&sw_lat=${(lat - 0.05).toFixed(
+        2
+      )}&sw_lng=${(lng - 0.05).toFixed(2)}&room_id=${roomInfo.id}">
             <div class="near-room-image-wrapper">
               <img src="${roomInfo.images[0]}" alt="">
             </div>
@@ -109,12 +114,13 @@ async function getNearRoomData(position) {
       nearRoomSwiperWrapper.insertAdjacentHTML('beforeend', nearRoomList);
     });
     nearSwiper();
+    loader.classList.add('loaded');
   } catch (error) {
     console.error(error);
   }
 }
 
-// Popular Room Swiper
+// Near Room Swiper
 function nearSwiper() {
   const nearRoomSwiper = new Swiper('.near-room-swiper-wrapper .swiper', {
     slidesPerView: 1,

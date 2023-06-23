@@ -20,9 +20,56 @@
   <link rel="stylesheet" href="/triphive/css/common.css">
   <link rel="stylesheet" href="/triphive/css/main.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+  <!-- Google Maps -->
+  <script defer src="/triphive/js/resultapi.js"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLw5EqI24CQQcmm4UFB_92E4SHTzXXNwc&callback=initMap"></script>
+  
+
 </head>
 <body>
   <div class="search-results-page-wrapper wrapper">
+
+    <!-- Loading -->
+    <div class="socket">
+      <div class="gel center-gel">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c1 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c2 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c3 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c4 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c5 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c6 r1">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+    </div>
+
     <!-- Navi -->
     <div id="navi-wrapper">
       <div class="container">
@@ -49,18 +96,29 @@
       </div>
     </div>
 
+    <!-- Google Map -->
+    <div class="full-map-wrapper">
+      <div id="full-map">
+      </div>
+    </div>
+
     <!-- Search Results Section-->
     <div class="search-results-wrapper container">
       <div class="search-results-section section">
       </div>
     </div>
 
+    <!-- Map Btn -->
+    <button class="show-map-btn">지도 <i class="ri-map-2-fill"></i></button>
+    <button class="show-list-btn">목록 <i class="ri-list-check"></i></i></button>
+
+
   </div>
 
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-  <script src="/triphive/js/resultapi.js"></script>
+ 
+  
+  <!-- <script src="/triphive/js/resultapi.js"></script> -->
 
 </body>
 </html>
