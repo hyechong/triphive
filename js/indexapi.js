@@ -2,7 +2,14 @@ const loader = document.querySelector('.preloader');
 
 window.addEventListener('load', function () {
   getPopularRoomData();
+
+  this.fetch('/triphive/apikey.php')
+    .then((d) => d.json())
+    .then((r) => {
+      // console.log(r);
+    });
 });
+console.log(endPoints.apiKeys);
 
 // Popular Room Section
 async function getPopularRoomData() {
