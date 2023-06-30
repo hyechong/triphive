@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
   const url = window.location.href;
   if (url.includes('search')) {
     getSearchDetailData();
@@ -37,7 +37,7 @@ async function getSearchDetailData() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '21b06b6cf8msh0b811f925acc780p1be05ajsnae0fcc00774b',
+      'X-RapidAPI-Key': APIKEYS.airbnbkey,
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
@@ -125,7 +125,7 @@ async function getKoreaDetailData() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '21b06b6cf8msh0b811f925acc780p1be05ajsnae0fcc00774b',
+      'X-RapidAPI-Key': APIKEYS.airbnbkey,
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
@@ -214,7 +214,7 @@ async function getNearDetailData() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '21b06b6cf8msh0b811f925acc780p1be05ajsnae0fcc00774b',
+      'X-RapidAPI-Key': APIKEYS.airbnbkey,
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
