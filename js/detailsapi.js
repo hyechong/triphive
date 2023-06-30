@@ -1,14 +1,3 @@
-window.addEventListener('DOMContentLoaded', function () {
-  const url = window.location.href;
-  if (url.includes('search')) {
-    getSearchDetailData();
-  } else if (url.includes('ne_lat')) {
-    getNearDetailData();
-  } else {
-    getKoreaDetailData();
-  }
-});
-
 // Detail Swiper
 function handleDetailSwiper() {
   const detailSwiper = new Swiper('.detail-swiper-wrapper .swiper', {

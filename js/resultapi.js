@@ -30,12 +30,12 @@ var searchValue = new URLSearchParams(location.search).get('search');
 const loadingSocket = document.querySelector('.socket');
 
 // Search Result Section
-async function getSearchRoomData() {
+async function getSearchRoomData(airbnbkey) {
   const url = `https://airbnb13.p.rapidapi.com/search-location?location=${searchValue}&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '21b06b6cf8msh0b811f925acc780p1be05ajsnae0fcc00774b',
+      'X-RapidAPI-Key': airbnbkey,
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
@@ -94,8 +94,6 @@ async function getSearchRoomData() {
   }
 }
 
-getSearchRoomData();
-
 var showMapBtn = document.querySelector('.show-map-btn');
 var showListBtn = document.querySelector('.show-list-btn');
 var searchResultWrapper = document.querySelector('.search-results-wrapper');
@@ -148,6 +146,7 @@ function addMarker(res) {
         scaledSize: new google.maps.Size(34, 47),
       },
       map: map,
+      animation: google.maps.Animation.DROP,
     });
 
     if (marker) {

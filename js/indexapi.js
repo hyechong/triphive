@@ -1,19 +1,7 @@
 const loader = document.querySelector('.preloader');
-// let APIKEYS = {};
-
-// window.addEventListener('DOMContentLoaded', function () {
-getPopularRoomData();
-// this.fetch(endPoints.apiKeys)
-//   .then((d) => d.json())
-//   .then((r) => {
-//     APIKEYS.airbnbkey = r.airbnbkey;
-//     APIKEYS.mapkey = r.mapkey;
-//   });
-// });
 
 // Popular Room Section
 async function getPopularRoomData() {
-  console.log(APIKEYS.airbnbkey);
   const url =
     'https://airbnb13.p.rapidapi.com/search-location?location=Korea&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW';
   const options = {
