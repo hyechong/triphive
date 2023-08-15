@@ -12,13 +12,13 @@ function handleDetailSwiper() {
 
 var searchValue2 = new URLSearchParams(location.search).get('search');
 
-const neLat = new URLSearchParams(location.search).get('ne_lat');
-const neLng = new URLSearchParams(location.search).get('ne_lng');
-const swLat = new URLSearchParams(location.search).get('sw_lat');
-const swLng = new URLSearchParams(location.search).get('sw_lng');
-const roomID = new URLSearchParams(location.search).get('room_id');
+var neLat = new URLSearchParams(location.search).get('ne_lat');
+var neLng = new URLSearchParams(location.search).get('ne_lng');
+var swLat = new URLSearchParams(location.search).get('sw_lat');
+var swLng = new URLSearchParams(location.search).get('sw_lng');
+var roomID = new URLSearchParams(location.search).get('room_id');
 
-const loadingSocket = document.querySelector('.socket');
+var loadingSocket = document.querySelector('.socket');
 
 // Search Detail Section
 async function getSearchDetailData() {
