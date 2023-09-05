@@ -41,10 +41,8 @@ async function getSearchDetailData() {
     let roomDetailImg = '';
     let roomDetailTxt = '';
 
-    // console.log(data);
     data.results.forEach((roomInfo) => {
       if (roomInfo.id == roomID) {
-        // console.log(image);
         for (let i = 0; i < roomInfo.images.length; i++) {
           roomDetailImg = `
             <div class="swiper-slide">
@@ -129,10 +127,8 @@ async function getKoreaDetailData() {
     let roomDetailImg = '';
     let roomDetailTxt = '';
 
-    // console.log(data);
     data.results.forEach((roomInfo) => {
       if (roomInfo.id == roomID) {
-        // console.log(image);
         for (let i = 0; i < roomInfo.images.length; i++) {
           roomDetailImg = `
             <div class="swiper-slide">
@@ -143,7 +139,6 @@ async function getKoreaDetailData() {
           `;
           detailSwiperWrapper.insertAdjacentHTML('beforeend', roomDetailImg);
         }
-        console.log(roomInfo);
         roomDetailTxt = `
           <div class="main-detail-section section">
             <h4>${roomInfo.name}</h4>
@@ -198,8 +193,23 @@ async function getKoreaDetailData() {
 }
 
 // Near Detail Section
-async function getNearDetailData() {
-  const url = `https://airbnb13.p.rapidapi.com/search-location?ne_lat=${neLat}&ne_lng=${neLng}&sw_lat=${swLat}&sw_lng=${swLng}&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
+
+navigator.geolocation.getCurrentPosition(getNearDetailData, getError);
+
+function getError() {
+  console.error('Error : ' + error);
+}
+
+async function getNearDetailData(position) {
+  const lat = Number(position.coords.latitude);
+  const lng = Number(position.coords.longitude);
+
+  const url = `https://airbnb13.p.rapidapi.com/search-geo?ne_lat=${
+    lat + 0.03
+  }&ne_lng=${lng + 0.03}&sw_lat=${lat - 0.03}&sw_lng=${
+    lng - 0.03
+  }&checkin=2023-09-15&checkout=2023-09-16&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
+
   const options = {
     method: 'GET',
     headers: {
@@ -207,7 +217,6 @@ async function getNearDetailData() {
       'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
     },
   };
-
   try {
     const response = await fetch(url, options);
     const data = await response.json();
@@ -218,10 +227,8 @@ async function getNearDetailData() {
     let roomDetailImg = '';
     let roomDetailTxt = '';
 
-    // console.log(data);
     data.results.forEach((roomInfo) => {
       if (roomInfo.id == roomID) {
-        // console.log(image);
         for (let i = 0; i < roomInfo.images.length; i++) {
           roomDetailImg = `
             <div class="swiper-slide">

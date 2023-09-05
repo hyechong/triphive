@@ -46,7 +46,6 @@ async function getSearchRoomData(airbnbkey) {
     let searchRoomList = '';
 
     data.results.forEach((roomInfo, idx) => {
-      // console.log(roomInfo);
       searchRoomList = `
         <a href="/triphive/pages/detail.html?search=${searchValue}&room_id=${
         roomInfo.id

@@ -58,17 +58,14 @@ function getError() {
 }
 
 async function getNearRoomData(position) {
-  // console.log(APIKEYS.airbnbkey);
   const lat = Number(position.coords.latitude);
   const lng = Number(position.coords.longitude);
 
-  const url = `https://airbnb13.p.rapidapi.com/search-geo?ne_lat=${(
-    lat + 0.05
-  ).toFixed(2)}&ne_lng=${(lng + 0.05).toFixed(2)}&sw_lat=${(lat - 0.05).toFixed(
-    2
-  )}&sw_lng=${(lng - 0.05).toFixed(
-    2
-  )}&checkin=2023-09-15&checkout=2023-09-16&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
+  const url = `https://airbnb13.p.rapidapi.com/search-geo?ne_lat=${
+    lat + 0.03
+  }&ne_lng=${lng + 0.03}&sw_lat=${lat - 0.03}&sw_lng=${
+    lng - 0.03
+  }&checkin=2023-09-15&checkout=2023-09-16&adults=1&children=0&infants=0&pets=0&page=1&currency=KRW`;
 
   const options = {
     method: 'GET',
@@ -87,16 +84,12 @@ async function getNearRoomData(position) {
     );
     let nearRoomList = '';
 
-    // console.log(data);
     data.results.forEach((roomInfo) => {
-      // console.log(roomInfo);
       nearRoomList = `
         <div class="swiper-slide">
-          <a href="/triphive/pages/detail.html?ne_lat=${(lat + 0.05).toFixed(
-            2
-          )}&ne_lng=${(lng + 0.05).toFixed(2)}&sw_lat=${(lat - 0.05).toFixed(
-        2
-      )}&sw_lng=${(lng - 0.05).toFixed(2)}&room_id=${roomInfo.id}">
+          <a href="/triphive/pages/detail.html?ne_lat=${lat + 0.03}&ne_lng=${
+        lng + 0.03
+      }&sw_lat=${lat - 0.03}&sw_lng=${lng - 0.03}&room_id=${roomInfo.id}">
             <div class="near-room-image-wrapper">
               <img src="${roomInfo.images[0]}" alt="">
             </div>

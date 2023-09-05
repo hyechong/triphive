@@ -2,7 +2,7 @@
 
 /* Reset Style */
 html{scroll-behavior: smooth;}
-body{font-family: 'Noto Sans', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 16px; background-color: #fff;}
+body{font-family: 'Noto Sans', sans-serif; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; font-size: 16px; background-color: #ddd; display: flex;}
 *{margin: 0; padding: 0; box-sizing: border-box;}
 ul{list-style: none;}
 a{text-decoration: none; color: black;}
